@@ -1,14 +1,11 @@
-﻿using Datetime.Model.Entities;
-using System.Collections.Generic;
-using System.Reflection.Emit;
-using Datetime.Model.Entities;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
+using Survivor.Model.Entities;
 
-namespace Datetime.Model
+namespace Survivor.Data.Migrations
 {
-    public class DatetimeDbContext : DbContext
+    public class SurvivorDbContext : DbContext
     {
-        public DatetimeDbContext(DbContextOptions<DatetimeDbContext> options) : base(options)
+        public SurvivorDbContext(DbContextOptions<SurvivorDbContext> options) : base(options)
         {
 
         }
@@ -18,9 +15,11 @@ namespace Datetime.Model
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Username=postgres;Password=341;Database=Datetime");
+            optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Username=postgres;Password=341;Database=Survivor");
         }
 
+      
+        // Seed data (with UTC times)
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             // Define relationships
@@ -74,3 +73,4 @@ namespace Datetime.Model
         }
     }
 }
+

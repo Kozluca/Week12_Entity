@@ -1,20 +1,19 @@
-﻿using Datetime.Dtos;
-using Datetime.Model;
-using Datetime.Model.Entities;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Survivor.Data.Migrations;
+using Survivor.Dtos;
+using Survivor.Model.Entities;
 
-namespace Datetime.Controllers
+namespace Survivor.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
     public class CategoryController : ControllerBase
     {
+        private readonly SurvivorDbContext _context;
 
-        private readonly DatetimeDbContext _context;
-
-        public CategoryController(DatetimeDbContext context)
+        public CategoryController(SurvivorDbContext context)
         {
             _context = context;
         }
@@ -117,3 +116,4 @@ namespace Datetime.Controllers
 
     }
 }
+    

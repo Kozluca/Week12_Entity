@@ -1,4 +1,4 @@
-﻿namespace Datetime.Model.Entities
+﻿namespace Survivor.Model.Entities
 {
     public class Competitor
     {

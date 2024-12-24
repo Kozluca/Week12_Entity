@@ -1,4 +1,4 @@
-﻿namespace Datetime.Dtos
+﻿namespace Survivor.Dtos
 {
     public class CompetitorDto
     {

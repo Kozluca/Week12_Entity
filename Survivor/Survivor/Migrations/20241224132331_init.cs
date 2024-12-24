@@ -6,7 +6,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
 
-namespace Datetime.Migrations
+namespace Survivor.Migrations
 {
     /// <inheritdoc />
     public partial class init : Migration
@@ -77,7 +77,7 @@ namespace Datetime.Migrations
                     { 7, 2, new DateTime(2024, 10, 10, 0, 0, 0, 0, DateTimeKind.Utc), "Ahmet", false, "Yılmaz", new DateTime(2024, 10, 10, 0, 0, 0, 0, DateTimeKind.Utc) },
                     { 8, 2, new DateTime(2024, 10, 10, 0, 0, 0, 0, DateTimeKind.Utc), "Elif", false, "Demirtaş", new DateTime(2024, 10, 10, 0, 0, 0, 0, DateTimeKind.Utc) },
                     { 9, 2, new DateTime(2024, 10, 10, 0, 0, 0, 0, DateTimeKind.Utc), "Cem", false, "Öztürk", new DateTime(2024, 10, 10, 0, 0, 0, 0, DateTimeKind.Utc) },
-                    { 10, 2,new DateTime(2024, 10, 10, 0, 0, 0, 0, DateTimeKind.Utc), "Ayşe", false, "Karaca", new DateTime(2024, 10, 10, 0, 0, 0, 0, DateTimeKind.Utc) }
+                    { 10, 2, new DateTime(2024, 10, 10, 0, 0, 0, 0, DateTimeKind.Utc), "Ayşe", false, "Karaca", new DateTime(2024, 10, 10, 0, 0, 0, 0, DateTimeKind.Utc) }
                 });
 
             migrationBuilder.CreateIndex(
