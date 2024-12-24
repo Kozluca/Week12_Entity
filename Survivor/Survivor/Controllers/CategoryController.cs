@@ -20,18 +20,18 @@ namespace Survivor.Controllers
 
 
         [HttpGet("/api/categories")]
-        public async Task<IActionResult> Get()
+        public async Task<IActionResult> Get()                  //bütün kategorileri listele
         {
-            var categories = await _context.Categories
+            var categories = await _context.Categories              
                            // .Where(c => !c.IsDeleted)
-                           .Select(c => new CategoryDto()
+                           .Select(c => new CategoryDto()           // CategoryDto daki yapıya uygun yeni liste oluştur
                            {
                                Id = c.Id,
                                ModifiedDate = c.ModifiedDate,
                                CreatedDate = c.CreatedDate,
                                Name = c.Name,
                            })
-                            .ToListAsync();
+                            .ToListAsync();                         // oluşturulanları listele
             return Ok(categories);
         }
 
@@ -40,8 +40,8 @@ namespace Survivor.Controllers
         {
 
             var categories = await _context.Categories
-                            .Where(c => c.Id == id)
-                            .Select(c => new CategoryDto()
+                            .Where(c => c.Id == id)                      // id ye göre kategoriyi getir
+                            .Select(c => new CategoryDto()              // CategoryDto daki yapıya uygun yeni liste oluştur
                             {
                                 Id = c.Id,
                                 ModifiedDate = c.ModifiedDate,
@@ -49,17 +49,17 @@ namespace Survivor.Controllers
                                 Name = c.Name,
                             })
                             .ToListAsync();
-            if (categories == null)
+            if (categories == null)                                   // kategori null ise notfound döndür
             {
                 return NotFound();
             }
-            return Ok(categories);
+            return Ok(categories);                                      // oluşturulan kategoriyi getir
         }
 
         [HttpPost("/api/add-category")]
         public async Task<IActionResult> AddCompetitor(CategoryDto category)
         {
-            // Create a new Competitor object and map the data from the DTO
+            // CategoryDto ya göre yeni category oluşturdk
             var newcategory = new Category
             {
 
@@ -71,38 +71,38 @@ namespace Survivor.Controllers
             };
 
 
-            // Add the new competitor to the context
+            // oluşturduğumuz newcategory yi _context.Categories e ekledik
             _context.Categories.Add(newcategory);
 
-            // Save changes to the database
+            //değişiklikleri kaydet
             await _context.SaveChangesAsync();
 
-            // Return the newly created competitor with a status of 201 (Created)
+            
             return CreatedAtAction(nameof(GetbyId), new { id = newcategory.Id }, newcategory);
         }
 
-        [HttpDelete("/api/category/delete/{id}")]      // çalısıyor.
+        [HttpDelete("/api/category/delete/{id}")]     
         public async Task<IActionResult> DeleteCategory(int id)
         {
-            var category = await _context.Categories.FirstOrDefaultAsync(c => c.Id == id);
+            var category = await _context.Categories.FirstOrDefaultAsync(c => c.Id == id); // id ye göre getir
             if (category == null)
             {
                 return NotFound();
             }
 
-            _context.Categories.Remove(category);
+            _context.Categories.Remove(category);     // _Context.categories den sil
             await _context.SaveChangesAsync();
 
             return NoContent();
         }
 
         [HttpPut("/api/category/update/{id}")]
-        public async Task<IActionResult> UpdateCategory(int id, CategoryDto categoryDto)
+        public async Task<IActionResult> UpdateCategory(int id, CategoryDto categoryDto) 
         {
-            var updatedcategory = await _context.Categories.FirstOrDefaultAsync(c => c.Id == id);
+            var updatedcategory = await _context.Categories.FirstOrDefaultAsync(c => c.Id == id);   // id ye göre kategori getir
             if (updatedcategory == null)
             { return NotFound(); }
-
+            //categoryDto ya göre düzenleme yap
             updatedcategory.Name = categoryDto.Name;
             updatedcategory.IsDeleted = categoryDto.IsDeleted;
             updatedcategory.ModifiedDate = categoryDto.ModifiedDate;

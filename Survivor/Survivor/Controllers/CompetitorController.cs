@@ -68,7 +68,7 @@ namespace Survivor.Controllers
 
 
         [HttpGet("/api/competitors/categories/{categoryId}")]
-        public async Task<ActionResult<CompetitorDto>> GetCompetitorsByCategoryId(int categoryId)
+        public async Task<ActionResult<CompetitorDto>> GetCompetitorsByCategoryId(int categoryId) 
         {
             var competitor = await _context.Competitors
                             .Where(c => c.CategoryId == categoryId)
