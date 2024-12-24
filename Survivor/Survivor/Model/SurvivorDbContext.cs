@@ -47,15 +47,7 @@ namespace Survivor.Data.Migrations
                     Name = "Gönüllüler"
                 }
             );
-
-
-            //modelBuilder.Entity<Category>().HasData(
-            //    new Category() { Id = 1, CreatedDate = new DateTime(2024, 10, 10), ModifiedDate = new DateTime(2024, 10, 10), IsDeleted = false, Name = "Ünlüler" },
-            //    new Category() { Id = 2, CreatedDate = new DateTime(2024, 10, 10), ModifiedDate = new DateTime(2024, 10, 10), IsDeleted = false, Name = "Gönüllüler" }
-
-            //    );
-
-
+                               
             modelBuilder.Entity<Competitor>().HasData(
 
                 new Competitor() { Id = 1, CreatedDate = new DateTime(2024, 10, 10), ModifiedDate = new DateTime(2024, 10, 10), IsDeleted = false, FirstName = "Acun", LastName = "Ilıcalı", CategoryId = 1 },
@@ -67,7 +59,7 @@ namespace Survivor.Data.Migrations
                 new Competitor() { Id = 7, CreatedDate = new DateTime(2024, 10, 10), ModifiedDate = new DateTime(2024, 10, 10), IsDeleted = false, FirstName = "Ahmet", LastName = "Yılmaz", CategoryId = 2 },
                 new Competitor() { Id = 8, CreatedDate = new DateTime(2024, 10, 10), ModifiedDate = new DateTime(2024, 10, 10), IsDeleted = false, FirstName = "Elif", LastName = "Demirtaş", CategoryId = 2 },
                 new Competitor() { Id = 9, CreatedDate = new DateTime(2024, 10, 10), ModifiedDate = new DateTime(2024, 10, 10), IsDeleted = false, FirstName = "Cem", LastName = "Öztürk", CategoryId = 2 },
-                new Competitor() { Id = 10, CreatedDate = new DateTime(2024, 10, 10), ModifiedDate = new DateTime(2024, 10, 10), IsDeleted = false, FirstName = "Ayşe", LastName = "Karaca", CategoryId = 2 }
+                new Competitor() { Id = 10,CreatedDate = new DateTime(2024, 10, 10), ModifiedDate = new DateTime(2024, 10, 10), IsDeleted = false, FirstName = "Ayşe", LastName = "Karaca", CategoryId = 2 }
 
                 );
         }

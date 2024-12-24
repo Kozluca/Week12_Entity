@@ -7,6 +7,5 @@
         public DateTime ModifiedDate { get; set; } = DateTime.UtcNow;
         public bool IsDeleted { get; set; } = false;
         public string Name { get; set; }
-        // public List<Competitor>? Competitors { get; set; }
     }
 }

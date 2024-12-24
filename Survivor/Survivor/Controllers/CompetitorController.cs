@@ -19,7 +19,7 @@ namespace Survivor.Controllers
         }
 
 
-        [HttpGet]
+        [HttpGet("/api/competitors")]
         public async Task<IActionResult> Get()
         {
             var competitors = await _context.Competitors
@@ -40,7 +40,7 @@ namespace Survivor.Controllers
 
 
 
-        [HttpGet("/api/competitors/{id}")]
+        [HttpGet("/api/competitor/{id}")]
         public async Task<IActionResult> GetbyId(int id)
         {
 
@@ -48,6 +48,7 @@ namespace Survivor.Controllers
                             .Where(c => c.Id == id)
                             .Select(c => new CompetitorDto()
                             {
+                                Id= c.Id,
                                 CategoryId = c.CategoryId,
                                 CategoryName = c.Category.Name,
                                 CreatedDate = c.CreatedDate,
@@ -90,7 +91,7 @@ namespace Survivor.Controllers
 
         }
 
-        [HttpPost]
+        [HttpPost("/api/competitors/add-competitor")]
         public async Task<IActionResult> AddCompetitor(CompetitorDto competitor)
         {
             // Create a new Competitor object and map the data from the DTO
@@ -116,7 +117,7 @@ namespace Survivor.Controllers
         }
 
 
-        [HttpDelete("{id:min(1)}")]      // çalısıyor.
+        [HttpDelete("/api/competitor/delete/{id}")]      // çalısıyor.
         public async Task<IActionResult> DeleteCompetitor(int id)
         {
             var competitor = await _context.Competitors.FirstOrDefaultAsync(c => c.Id == id);
@@ -131,7 +132,7 @@ namespace Survivor.Controllers
             return NoContent();
         }
 
-        [HttpPut]
+        [HttpPut("/api/competitor/update/{id}")]
         public async Task<IActionResult> UpdateCompetitor(int id, CompetitorDto competitorDto)
         {
             var competitor = await _context.Competitors.FirstOrDefaultAsync(c => c.Id == id);

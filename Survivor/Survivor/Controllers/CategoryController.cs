@@ -19,7 +19,7 @@ namespace Survivor.Controllers
         }
 
 
-        [HttpGet]
+        [HttpGet("/api/categories")]
         public async Task<IActionResult> Get()
         {
             var categories = await _context.Categories
@@ -56,7 +56,7 @@ namespace Survivor.Controllers
             return Ok(categories);
         }
 
-        [HttpPost("/api/create-category")]
+        [HttpPost("/api/add-category")]
         public async Task<IActionResult> AddCompetitor(CategoryDto category)
         {
             // Create a new Competitor object and map the data from the DTO
@@ -81,7 +81,7 @@ namespace Survivor.Controllers
             return CreatedAtAction(nameof(GetbyId), new { id = newcategory.Id }, newcategory);
         }
 
-        [HttpDelete("{id:min(1)}")]      // çalısıyor.
+        [HttpDelete("/api/category/delete/{id}")]      // çalısıyor.
         public async Task<IActionResult> DeleteCategory(int id)
         {
             var category = await _context.Categories.FirstOrDefaultAsync(c => c.Id == id);
@@ -96,7 +96,7 @@ namespace Survivor.Controllers
             return NoContent();
         }
 
-        [HttpPut]
+        [HttpPut("/api/category/update/{id}")]
         public async Task<IActionResult> UpdateCategory(int id, CategoryDto categoryDto)
         {
             var updatedcategory = await _context.Categories.FirstOrDefaultAsync(c => c.Id == id);
