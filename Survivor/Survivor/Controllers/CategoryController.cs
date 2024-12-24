@@ -70,14 +70,8 @@ namespace Survivor.Controllers
                 ModifiedDate = category.ModifiedDate
             };
 
-
-            // oluşturduğumuz newcategory yi _context.Categories e ekledik
-            _context.Categories.Add(newcategory);
-
-            //değişiklikleri kaydet
-            await _context.SaveChangesAsync();
-
-            
+            _context.Categories.Add(newcategory);        // oluşturduğumuz newcategory yi _context.Categories e ekledik
+            await _context.SaveChangesAsync();            //değişiklikleri kaydet
             return CreatedAtAction(nameof(GetbyId), new { id = newcategory.Id }, newcategory);
         }
 
